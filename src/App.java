@@ -15,18 +15,55 @@ public class App {
 
         // Ejecuta los ejercicios de sumatoria y anagramas
         runEjerccios();
+
     }
 
     private static void runEmpleadoExample() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        EmpleadoContoller empleadoController=new EmpleadoContoller();
+        empleadoController.addEmpleado(new Empleado(100550, "Fernando", "tec"));
+        empleadoController.addEmpleado(new Empleado(100551, "Jose", "doc"));
+        empleadoController.addEmpleado(new Empleado(100552, "Marc", "est"));
+        empleadoController.imprimirEmpleado();
     }
 
     private static void runMapExamlpe() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        new Mapa();
+        
     }
 
     private static void runEjerccios() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        
+        Ejercicios ejercicios = new Ejercicios();
+        // Test para sumatoriaDeDos
+        int[] nums = { 11, 2, 7, -2 };
+        int objetivo = 5;
+        int[] resultado = ejercicios.sumatoriaDeDos(nums, objetivo);
+        if (resultado != null) {
+            System.out.println(
+                    "Suma de dos para objetivo " + objetivo + ": [" + resultado[0] + ", " + resultado[1] + "]");
+        } else {
+            System.out.println("No se encontraron dos números que sumen " + objetivo);
+        }
 
+        objetivo = 10;
+        resultado = ejercicios.sumatoriaDeDos(nums, objetivo);
+        if (resultado != null) {
+            System.out.println(
+                    "Suma de dos para objetivo " + objetivo + ": [" + resultado[0] + ", " + resultado[1] + "]");
+        } else {
+            System.out.println("No se encontraron dos números que sumen " + objetivo);
+        }
+
+        //// EJERCICIO 2
+        // Test para areAnagrams
+        String str1 = "listen";
+        String str2 = "silent";
+        boolean sonAnagramas = Ejercicios.areAnagrams(str1, str2);
+        System.out.println("¿Son anagramas '" + str1 + "' y '" + str2 + "'? " + sonAnagramas);
+
+        str1 = "hello";
+        str2 = "bello";
+        sonAnagramas = Ejercicios.areAnagrams(str1, str2);
+        System.out.println("¿Son anagramas '" + str1 + "' y '" + str2 + "'? " + sonAnagramas);
     }
 }

@@ -1,6 +1,8 @@
 package controllers;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 public class Ejercicios {
 
@@ -28,8 +30,28 @@ public class Ejercicios {
      * frecuencia.
      */
     public static boolean areAnagrams(String str1, String str2) {
-        throw new UnsupportedOperationException("Not implemented yet");
 
+        HashMap<Character,Integer>primer=new HashMap<>();
+        int tamano=str1.length();
+        for (int i=0;i<tamano;i++){
+            if(primer.containsKey(str1.charAt(i))){
+                primer.put(str1.charAt(i), 2);
+            }else if(!primer.containsKey(str1.charAt(i))){
+                primer.put(str1.charAt(i), 1);
+            }
+            if(primer.containsKey(str2.charAt(i))){
+                primer.put(str2.charAt(i), 2);
+            }else if(!primer.containsKey(str2.charAt(i))){
+                primer.put(str2.charAt(i), 1);
+            }
+        }
+        System.out.println(primer);
+        for(Integer x:primer.values()){
+            if (x==1){
+                return false;
+            }
+        }
+        return true;
     }
 
     /*
@@ -46,8 +68,28 @@ public class Ejercicios {
      * Ejemplo B:
      * Input: nums = [9,2,3,6], objetivo = 10
      * Output: null
-     */
+     */ 
     public int[] sumatoriaDeDos(int[] nums, int objetivo) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        /*int []result=new int[2];
+        for(int i=0;i<nums.length;i++){
+            for(int j=1;j<nums.length;j++){
+                int comp=nums[i]+nums[j];
+                if(comp==objetivo){
+                    result[0]=i; 
+                    result[1]=j;
+                    return result;
+                }
+            }
+        }
+        return null; */
+         Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int complemento = objetivo - nums[i];
+        if (map.containsKey(complemento)) {
+            return new int[]{map.get(complemento), i};
+        }
+        map.put(nums[i], i);
+    }
+    return null;
     }
 }
